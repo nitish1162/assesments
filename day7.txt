@@ -1,0 +1,137 @@
+Question1. Write a program in the following steps:
+a. Generates 10 Random 3 Digit number.
+b. Store this random numbers into a array.
+c. Then find the 2nd largest and the 2nd smallest element without sorting the array.
+Ans:
+
+MAXCOUNT=10
+count=1
+#Array name is number
+
+while [ "$count" -le $MAXCOUNT ]; do
+ number[$count]=$(( ( RANDOM % 10 ) + 100 ))
+ let "count += 1"
+done
+
+echo "${number[*]}"
+
+largest=${number[0]}
+secondGreatest='unset'
+
+for((i=1; i < ${#number[@]}; i++))
+do
+  if [[ ${number[i]} > $largest ]]
+  then
+    secondGreatest=$largest
+    largest=${number[i]}
+  elif (( ${number[i]} != $largest )) && { [[ "$secondGreatest" = "unset" ]] || [[ ${number[i]} > $secondGreatest ]]; }
+  then
+    secondGreatest=${number[i]}
+  fi
+done
+
+echo "secondGreatest = $secondGreatest"
+
+Question2. Extend the above program to sort the array and then find the 2nd largest and the 2nd smallest element.
+Ans:
+MAXCOUNT=10
+count=1
+#Array name is number
+
+while [ "$count" -le $MAXCOUNT ]; do
+ number[$count]=$(( ( RANDOM % 10 ) + 100 ))
+ let "count += 1"
+done
+
+echo "${number[*]}"
+
+secondGreatest=$(printf '%s\n' "${number[@]}" | sort -nu | tail -2 | head -1)
+echo "Second Greatest element is " $secondGreatest
+
+secondSmallest=$(printf '%s\n' "${number[@]}" | sort -nu | head -2 | tail -1)
+echo "Second Smallest element is " $secondSmallest
+
+Question3. Extend the Prime Factorization Program to store all the Prime Factors of a number n into an array and finally display the output.
+And:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

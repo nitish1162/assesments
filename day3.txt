@@ -1,0 +1,257 @@
+Question1. Get user info from/etc/passwd and change ownership of user's home directory (select userid higher than 1000)
+Ans:
+
+$ sudo chown
+
+$ cd /Desktop/Dir1
+ 
+$ chown --version
+
+$ sudo chown test sample
+
+$ chown 1002 sample2
+
+$ id -u USERNAME	
+
+============================================================================
+
+Question2. Move files from one folder to respective folder
+Ans:
+$ mkdir temp
+$ cd temp/
+$ touch abc.txt def.txt ghi.txt jkl.txt
+
+$ ls
+abc.txt  def.txt  ghi.txt  jkl.txt
+
+$ notepad loops.sh
+$ bash loops.sh
+
+$ ls
+abc/abc.txt  def/def.txt  ghi/ghi.txt  jkl/jkl.txt  loops.sh
+
+=====================================================================
+
+Question3. Append current date to all log files name which has extension .log.1 from a folder
+Ans:
+$ touch abc.log.1 def.log.1 ghi.log.1 jkl.log.1 mno.log.1
+
+$ ls
+abc.log.1  def.log.1  ghi.log.1  jkl.log.1  mno.log.1
+
+$ basename /temp/abc.log.1 .log.1
+abc
+
+$ date +"%d%m%Y"
+27102021
+
+=============================================================================
+
+Question4. Archive the files which have modified 7 days ago and move it to your backup folder.
+Ans:
+
+$ find /Nitish/Pract/ -mtime -7 -ls
+
+$ find . -mtime -7 -print0 | xargs -0 tar -cjf /foo/archive.tar.bz2
+
+$ tar --newer $(date -d'7 days ago' +"%d-%b") -zcf thisweek.tgz .
+
+===============================================================================
+
+Question6. Execute command "Hello" and "ls" and check its execution status and print whether command executed successful or not.
+Ans:
+
+$ ls
+access.log.txt  command.sh*  temp/  var/
+
+$ echo $?
+0
+
+$ bash command.sh
+Command sucessfully executed
+
+$ hello
+bash: hello: command not found
+
+$ echo $?
+127
+
+$ bash command.sh
+Command sucessfully executed
+
+Code:
+
+#!/bin/bash
+
+if [ $? -eq 0 ]
+then
+   echo "Command sucessfully executed"
+else
+   echo "Command execution fail"
+fi
+
+======================================================================
+
+Question9. Creat process list table displays process id, command name, % of memory consumption, % of cpu utilization
+Ans:
+
+$ ps PID,PPID,CMD,%MEM,%CPU
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      636       1     636      10552  ?         197609 21:59:55 /usr/bin/mintty
+      768     637     768       6948  pty0      197609 22:13:55 /usr/bin/ps
+      637     636     637       4532  pty0      197609 21:59:56 /usr/bin/bash
+
+watch command:
+ watch -n 1 'ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
+
+ps command:
+ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+
+======================================================================
+
+Question10. print last 4 frequently access urls count in sorted order from /var/log/httpd/access.log
+Ans:
+
+$ cat var/log/httpd/access.log.txt
+
+$ cat access.log.txt | awk '{print $11}'
+
+$ awk '{ a[$0]++ } END {for (i in a) print a[i], i }' access.log.txt | sort -nr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

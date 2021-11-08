@@ -1,0 +1,56 @@
+Question 1. Use Random Function (( RANDOM )) to get Single Digit:
+ANS: 
+echo $(( $RANDOM % 10 ))
+
+Question 2. Use Random to get Dice Number between 1 to 6:
+ANS: 
+echo $(( ( $RANDOM % 5 ) + 1 ))
+
+Question 3. Add two Random Dice Number and Print the Result:
+ANS: 
+dice1=$((RANDOM%6))
+dice2=$((RANDOM%6))
+sum=$((dice1+dice2))
+echo $sum
+
+Question 4. Write a program that reads 5 Random 2 Digit values , then find their sum and the average:
+ANS:
+randomNum1=$(( ( RANDOM % 10 ) + 10 ))
+randomNum2=$(( ( RANDOM % 10 ) + 10 ))
+randomNum3=$(( ( RANDOM % 10 ) + 10 ))
+randomNum4=$(( ( RANDOM % 10 ) + 10 ))
+randomNum5=$(( ( RANDOM % 10 ) + 10 ))
+sum=$((randomNum1+randomNum2+randomNum3+randomNum4+randomNum5))
+average=$((sum/5))
+echo $sum
+echo $average
+
+Question 5. Unit Conversion:
+           a. 1ft = 12 in then 42 in = ? ft
+           b. Rectangular Plot of 60 feet x 40 feet in meters
+           c. Calculate area of 25 such plots in acres
+ANS:
+a.
+inch=42
+feet=`awk 'BEGIN{printf("%0.2f",'$inch' / 12)}'`
+echo $feet
+
+b.
+length=60
+width=40
+area=$(($length*$width))
+echo "Area in feet" $area
+areaInMeters=`awk 'BEGIN{printf("%0.2f",'$area' / 0.30)}'`
+echo "Area In meters" $areaInMeters
+
+c.
+length=60
+width=40
+area=$(($length*$width))
+echo "Area in Feet" $area
+areaInMeters=`awk 'BEGIN{printf("%0.2f",'$area' / 0.30)}'`
+echo "Area in Meters" $areaInMeters
+bigArea=`awk 'BEGIN{printf("%0.2f",'$areaInMeters' * 25)}'`
+areaInAcres=`awk 'BEGIN{printf("%0.2f",'$bigArea' / 0.000247105)}'`
+echo "area in Acres" $areaInAcres
+
